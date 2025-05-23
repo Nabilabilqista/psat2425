@@ -9,38 +9,39 @@
 ## 1. Membuat EC2 Instance
 
 ```.env
-1. Masuk ke **AWS Console**.
-2. Buka **EC2**.
-3. Pilih **Instances**.
-4. Klik **Launch Instance**.
+1. Masuk ke "AWS Console"
+2. Buka "EC2"
+3. Pilih "Instances"
+4. Klik "Launch Instance"
 5. Konfigurasi instance:
-   - **Name**: `nabila1` ~> namanya bebas
-   - **AMI**: `Ubuntu`
-   - **Instance type**: `t2.micro` (Free tier eligible)
-   - **Key pair**: `vockey`
-   - **Firewall (Security Group)**: `Create security group`
+   - "Name": `nabila1` ~> namanya bebas
+   - "AMI": `Ubuntu`
+   - "Instance type": `t2.micro` (Free tier eligible)
+   - "Key pair": `vockey`
+   - "Firewall (Security Group)": `Create security group`
        Ceklis:
      - Allow SSH ~> port 22
      - Allow HTTPS ~> port 443
      - Allow HTTP ~> port 80
      - Pilih Annyware 0.0.0.0/0
-6. Klik **Launch Instance**.
-5. Klik **Connect**.
+6. Klik "Launch Instance"
+5. Klik "Connect"
 ```
 
 ## 2. Membuka Terminal Instance
 
 ```.env
-1. Klik **Intance ID** sesuai instance yang sudah dibuat
-2. Klik **Connect**
+1. Klik "Intance ID" sesuai instance yang sudah dibuat
+2. Klik "Connect"
 3. Scroll ke bawah
-4. Klik **Connect**
+4. Klik "Connect"
 ```
 
 ## 3. Masuk di EC2 Instance Connect
 
-```.env
 1. Masukkan perintah:
+
+```.env
     $ nano otomatis.sh #!/bin/bash
     echo '#!/bin/bash
     sudo apt update -y
@@ -75,7 +76,6 @@
 ```.env
 1. Salin IP Publicnya
 2. Tempel ke browser
-
 ```
 
 ## Selesai
@@ -84,34 +84,31 @@
 ## Troubleshooting AWS
 Terkadang, saat menggunakan layanan AWS, kita bisa mengalami beberapa kendala teknis. Berikut ini adalah beberapa masalah umum beserta cara mengatasinya.
 
-1. `Masalah:` ~> **Security group** (di bagian **EC2**)
+1. `Masalah:` ~> "Security group" (di bagian "EC2")
 Biasanya jika sudah punya security group, kita bisa hanya dengan:
 
 ```.env
-- Pilih **Select existing security group**
+- Pilih "Select existing security group"
 - Pilih security group yang ingin di pakai, contoh: `SG-ServerDB`
-
 ```
 
 Namun, jika terjadi error. Bisa menggunakan cara berikut.
-
    `Solusi`
   
-  ```.env
-- Masuk ke **AWS Console**
-- Buka **EC2**
-- Cari bagian **Security Groups**
-- Pilih **Create security group**
+```.env
+- Masuk ke "AWS Console"
+- Buka "EC2"
+- Cari bagian "Security Groups"
+- Pilih "Create security group"
     Ceklis:
    - Allow SSH ~> port 22
    - Allow HTTPS ~> port 443
    - Allow HTTP ~> port 80
    - Pilih Annyware 0.0.0.0/0
+ ```
 
-   ```
-
-2. `Masalah` ~> **User data** (**EC2** bagian **Advanced details**)
-Seharusnya, untuk bagian **User data** ini, diletakkan prompt berikut.
+2. `Masalah` ~> "User data" ("EC2" bagian "Advanced details")
+Seharusnya, untuk bagian "User data" ini, diletakkan prompt berikut.
 
 ```.env
 - Salin prompt di bawah ini
@@ -131,23 +128,25 @@ Seharusnya, untuk bagian **User data** ini, diletakkan prompt berikut.
   sudo a2ensite default-ssl.conf
   sudo systemctl reload apache2' > /home/ubuntu/otomatis.sh
 
-  chmod +x /home/ubuntu/otomatis.sh 
-- Klik **Launch Instance**
-- Klik **Intance ID** sesuai instance yang sudah dibuat
-- Klik **Connect**
+  chmod +x /home/ubuntu/otomatis.sh
+  ```
+
+  ```.env
+- Klik "Launch Instance"
+- Klik "Intance ID" sesuai instance yang sudah dibuat
+- Klik "Connect"
 - Scroll ke bawah
-- Klik **Connect**
-- Masuk di **EC2 Instance Connect**
+- Klik "Connect"
+- Masuk di "EC2 Instance Connect"
 - Ketik perintah
   $ ./otomatis.sh
-
 ```
 
 Namun, jika terjadi error, maka bisa menjalankan cara di bawah ini.
-  **Solusi:**
+  `Solusi:`
 
   ```.env
-- Masuk ke **EC2 Instance Connect**
+- Masuk ke "EC2 Instance Connect"
 - Masukkan perintah:
   $ nano otomatis.sh #!/bin/bash
   echo '#!/bin/bash
@@ -170,4 +169,4 @@ Namun, jika terjadi error, maka bisa menjalankan cara di bawah ini.
 
   ```
 
-Itulah beberapa masalah yang saya temukan beserta solusinya.
+Itulah beberapa masalah beserta solusinya.
