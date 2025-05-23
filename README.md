@@ -8,6 +8,7 @@
 
 ## 1. Membuat EC2 Instance
 
+```.env
 1. Masuk ke **AWS Console**.
 2. Buka **EC2**.
 3. Pilih **Instances**.
@@ -25,16 +26,20 @@
      - Pilih Annyware 0.0.0.0/0
 6. Klik **Launch Instance**.
 5. Klik **Connect**.
+```
 
 ## 2. Membuka Terminal Instance
 
+```.env
 1. Klik **Intance ID** sesuai instance yang sudah dibuat
 2. Klik **Connect**
 3. Scroll ke bawah
 4. Klik **Connect**
+```
 
 ## 3. Masuk di EC2 Instance Connect
 
+```.env
 1. Masukkan perintah:
     $ nano otomatis.sh #!/bin/bash
     echo '#!/bin/bash
@@ -54,17 +59,24 @@
 
     $ chmod +x otomatis.sh
     $ ./otomatis.sh
+```
 
+```.env
   Penjelasan:
     sudo git clone [nama repositories di github] /var/www/html
     DB_USER=....  ~> isi dengan username RDS (di bagian master username)
     DB_PASS=....  ~> isi dengan password RDS
     DB_NAME=....  ~> isi dengan nama database RDS (bebas bole)
     DB_HOST=....  ~> isi dengan Endpoint di RDS
+```
 
 ## Uji Coba
+
+```.env
 1. Salin IP Publicnya
 2. Tempel ke browser
+
+```
 
 ## Selesai
 
@@ -74,10 +86,18 @@ Terkadang, saat menggunakan layanan AWS, kita bisa mengalami beberapa kendala te
 
 1. `Masalah:` ~> **Security group** (di bagian **EC2**)
 Biasanya jika sudah punya security group, kita bisa hanya dengan:
+
+```.env
 - Pilih **Select existing security group**
 - Pilih security group yang ingin di pakai, contoh: `SG-ServerDB`
-Namun, jika terjadi error. Bisa menggunakan cara berikut. 
-   **Solusi:**
+
+```
+
+Namun, jika terjadi error. Bisa menggunakan cara berikut.
+
+   `Solusi`
+  
+  ```.env
 - Masuk ke **AWS Console**
 - Buka **EC2**
 - Cari bagian **Security Groups**
@@ -88,8 +108,12 @@ Namun, jika terjadi error. Bisa menggunakan cara berikut.
    - Allow HTTP ~> port 80
    - Pilih Annyware 0.0.0.0/0
 
+   ```
+
 2. `Masalah` ~> **User data** (**EC2** bagian **Advanced details**)
 Seharusnya, untuk bagian **User data** ini, diletakkan prompt berikut.
+
+```.env
 - Salin prompt di bawah ini
   #!/bin/bash
   echo '#!/bin/bash
@@ -117,8 +141,12 @@ Seharusnya, untuk bagian **User data** ini, diletakkan prompt berikut.
 - Ketik perintah
   $ ./otomatis.sh
 
+```
+
 Namun, jika terjadi error, maka bisa menjalankan cara di bawah ini.
   **Solusi:**
+
+  ```.env
 - Masuk ke **EC2 Instance Connect**
 - Masukkan perintah:
   $ nano otomatis.sh #!/bin/bash
@@ -140,5 +168,6 @@ Namun, jika terjadi error, maka bisa menjalankan cara di bawah ini.
   $ chmod +x otomatis.sh
   $ ./otomatis.sh
 
+  ```
+
 Itulah beberapa masalah yang saya temukan beserta solusinya.
-Apabila ada kesalahan pengetikan, saya mohon maaf.
